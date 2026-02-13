@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказы | HeadsetStore</title>
+</head>
+<body>
+<h2>Заказы</h2>
+
+<a href="{% url 'headset_list' %}">Каталог гарнитур</a> |
+<a href="{% url 'order_create' %}">Создать заказ</a> |
+<a href="{% url 'logout' %}">Выйти</a>
+
+<hr>
+
+{% for order in orders %}
+    <div>
+        <h3>Заказ #{{ order.id }}</h3>
+        <p>Пользователь: {{ order.user.username }}</p>
+        <p>Гарнитура: {{ order.headset.brand }} {{ order.headset.name }}</p>
+        <p>Количество: {{ order.quantity }}</p>
+        <p>Итог: {{ order.total_price }} ₽</p>
+        <p>Статус: {{ order.status }}</p>
+        {% if user.is_superuser %}
+            <a href="{% url 'order_update' order.id %}">Редактировать</a>
+        {% endif %}
+        <hr>
+    </div>
+{% empty %}
+    <p>Заказов пока нет</p>
+{% endfor %}
+
+</body>
+</html>

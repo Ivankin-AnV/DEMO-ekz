@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Гостевой просмотр | HeadsetStore</title>
+</head>
+<body>
+
+<h2>Каталог гарнитур (гость)</h2>
+
+<a href="/">Назад ко входу</a>
+<hr>
+
+{% for headset in headsets %}
+    <div>
+        <h3>{{ headset.brand }} {{ headset.name }}</h3>
+        <p>Цена: {{ headset.price }} ₽</p>
+        <p>{{ headset.description }}</p>
+        <p>Беспроводная: {{ headset.is_wireless }}</p>
+        <hr>
+    </div>
+{% empty %}
+    <p>Товаров пока нет</p>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог гарнитур | HeadsetStore</title>
+</head>
+<body>
+<h2>Каталог гарнитур</h2>
+
+<a href="{% url 'logout' %}">Выйти</a> | 
+<a href="{% url 'order_list' %}">Мои заказы</a>
+{% if user.is_superuser %}
+ | <a href="{% url 'headset_create' %}">Добавить гарнитуру</a>
+{% endif %}
+
+<hr>
+
+<form method="get">
+    <input type="text" name="search" placeholder="Поиск...">
+    <select name="sort">
+        <option value="">Сортировка</option>
+        <option value="price">По цене</option>
+    </select>
+    <button type="submit">Применить</button>
+</form>
+
+{% for headset in headsets %}
+    <div>
+        <h3>{{ headset.brand }} {{ headset.name }}</h3>
+        <p>Цена: {{ headset.price }} ₽</p>
+        <p>{{ headset.description }}</p>
+        <p>Беспроводная: {{ headset.is_wireless }}</p>
+        {% if user.is_superuser %}
+            <a href="{% url 'headset_update' headset.id %}">Редактировать</a> |
+            <a href="{% url 'headset_delete' headset.id %}">Удалить</a>
+        {% endif %}
+        <hr>
+    </div>
+{% empty %}
+    <p>Товаров пока нет</p>
+{% endfor %}
+
+</body>
+</html>

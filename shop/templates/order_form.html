@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создать/Редактировать заказ | HeadsetStore</title>
+</head>
+<body>
+<h2>Создать/Редактировать заказ</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>
+
+<a href="{% url 'order_list' %}">Назад к заказам</a>
+</body>
+</html>

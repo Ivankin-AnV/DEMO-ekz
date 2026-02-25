@@ -1,5 +1,10 @@
+## Установка
+
+```python3 -m venv venv```
+```source venv/bin/activate```
+```pip install django```
+```python manage.py migrate```
+
+
 ## Запуск сервера
 ```python3 manage.py runserver```
-
-# Активировать виртуальное окружение
-venv\Scripts\activate

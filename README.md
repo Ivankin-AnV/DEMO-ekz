@@ -12,3 +12,8 @@
 
 ## Запуск сервера
 ```python3 manage.py runserver```
+
+## Админ
+
+### login - test
+### pass - test

@@ -1,5 +1,6 @@
 from django import forms
-from .models import Headset, Order
+from .models import Headset, Order, OrderItem
+
 
 class HeadsetForm(forms.ModelForm):
     class Meta:
@@ -10,4 +11,10 @@ class HeadsetForm(forms.ModelForm):
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['headset', 'quantity', 'status']
+        fields = ['status']
+
+
+class OrderItemForm(forms.ModelForm):
+    class Meta:
+        model = OrderItem
+        fields = ['headset', 'quantity']
